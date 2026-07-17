@@ -1,250 +1,321 @@
-// ============================================================
-// CLOUD DECK — navigation, progress tracking, quiz engine
-// ============================================================
-
-const CHAPTERS = [
-  { id: "hero", num: "00", label: "Welcome" },
-  { id: "ch01", num: "01", label: "What Is Cloud Computing" },
-  { id: "ch02", num: "02", label: "Deployment Models" },
-  { id: "ch03", num: "03", label: "IaaS / PaaS / SaaS" },
-  { id: "ch04", num: "04", label: "Virtualization" },
-  { id: "ch05", num: "05", label: "Containers & Docker" },
-  { id: "ch06", num: "06", label: "Kubernetes" },
-  { id: "ch07", num: "07", label: "Storage & Databases" },
-  { id: "ch08", num: "08", label: "Networking" },
-  { id: "ch09", num: "09", label: "Serverless" },
-  { id: "ch10", num: "10", label: "Security & IAM" },
-  { id: "ch11", num: "11", label: "DevOps & IaC" },
-  { id: "ch12", num: "12", label: "Cost & Monitoring" },
-  { id: "quiz", num: "13", label: "Assessment" },
-];
-
-const STORAGE_KEY = "cloud-deck-progress";
-
-function loadProgress() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-  } catch {
-    return {};
-  }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-function saveProgress(progress) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-  } catch {
-    /* storage unavailable — fail silently, nav still works */
-  }
+body {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    overflow: hidden;
 }
 
-let progress = loadProgress();
-
-// ---------- build sidebar ----------
-const rackUnits = document.getElementById("rackUnits");
-CHAPTERS.forEach((ch) => {
-  const btn = document.createElement("button");
-  btn.className = "rack-unit";
-  btn.dataset.target = ch.id;
-  btn.innerHTML = `<span class="unit-num">${ch.num}</span><span>${ch.label}</span><span class="unit-led"></span>`;
-  btn.addEventListener("click", () => goTo(ch.id));
-  rackUnits.appendChild(btn);
-});
-
-function refreshRackState(activeId) {
-  document.querySelectorAll(".rack-unit").forEach((btn) => {
-    const id = btn.dataset.target;
-    btn.classList.toggle("active", id === activeId);
-    btn.classList.toggle("visited", !!progress[id]);
-  });
-  const total = CHAPTERS.length;
-  const done = CHAPTERS.filter((c) => progress[c.id]).length;
-  document.getElementById("progressCount").textContent = done;
-  document.getElementById("progressTotal").textContent = total;
-  document.getElementById("progressFill").style.width = `${(done / total) * 100}%`;
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 }
 
-// ---------- panel navigation ----------
-function goTo(id) {
-  document.querySelectorAll(".panel").forEach((p) => {
-    const match = p.dataset.panel === id;
-    if (p.classList.contains("hero")) {
-      p.style.display = match || id === "hero" ? "grid" : "none";
-    } else {
-      p.classList.toggle("is-visible", match);
-    }
-  });
-
-  progress[id] = true;
-  saveProgress(progress);
-  refreshRackState(id);
-
-  const el = document.getElementById(id) || document.querySelector(`[data-panel="${id}"]`);
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  history.replaceState(null, "", `#${id}`);
+.sidebar {
+    width: 260px;
+    background-color: #0f172a;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    flex-shrink: 0;
 }
 
-document.querySelectorAll("[data-goto]").forEach((el) => {
-  el.addEventListener("click", () => goTo(el.dataset.goto));
-});
-
-// initial state: hash, else hero
-const startId = window.location.hash ? window.location.hash.slice(1) : "hero";
-goTo(CHAPTERS.some((c) => c.id === startId) ? startId : "hero");
-
-// remove boot screen from tab order once hidden
-setTimeout(() => {
-  const boot = document.getElementById("bootScreen");
-  if (boot) boot.style.pointerEvents = "none";
-}, 1600);
-
-// ============================================================
-// QUIZ ENGINE
-// ============================================================
-
-const QUIZ = [
-  {
-    q: "What does 'rapid elasticity' mean in cloud computing?",
-    options: [
-      "Resources can scale up or down quickly based on demand",
-      "The provider guarantees zero downtime forever",
-      "Servers are physically portable",
-      "Prices never change",
-    ],
-    correct: 0,
-  },
-  {
-    q: "Which deployment model links a private data center to a public cloud provider?",
-    options: ["Community cloud", "Hybrid cloud", "Public cloud", "Private cloud"],
-    correct: 1,
-  },
-  {
-    q: "In PaaS, which of these do YOU still manage?",
-    options: ["The operating system", "The physical hardware", "Your application code and data", "Patching the runtime"],
-    correct: 2,
-  },
-  {
-    q: "What is the main job of a hypervisor?",
-    options: [
-      "Compress files for storage",
-      "Run multiple isolated virtual machines on one physical host",
-      "Encrypt network traffic",
-      "Balance load across regions",
-    ],
-    correct: 1,
-  },
-  {
-    q: "Why do containers start faster than virtual machines?",
-    options: [
-      "They use faster disks",
-      "They share the host OS kernel instead of booting their own",
-      "They don't use CPU",
-      "They are always smaller than 1MB",
-    ],
-    correct: 1,
-  },
-  {
-    q: "What does a Kubernetes Deployment with replicas: 3 guarantee?",
-    options: [
-      "Exactly 3 nodes in the cluster",
-      "3 running copies of the pod, recreated automatically if one dies",
-      "3 load balancers",
-      "3 separate namespaces",
-    ],
-    correct: 1,
-  },
-  {
-    q: "Which storage type would you use for a database's raw disk volume?",
-    options: ["Object storage", "File storage", "Block storage", "CDN cache"],
-    correct: 2,
-  },
-  {
-    q: "What problem does a CDN solve?",
-    options: [
-      "It encrypts passwords",
-      "It reduces latency by caching content closer to users",
-      "It replaces the need for a database",
-      "It manages IAM permissions",
-    ],
-    correct: 1,
-  },
-  {
-    q: "In serverless computing, what are you typically billed for?",
-    options: [
-      "A fixed monthly server rental",
-      "The number of employees using the app",
-      "Actual execution time/invocations of your function",
-      "Total disk size of the provider's data center",
-    ],
-    correct: 2,
-  },
-  {
-    q: "What does the 'shared responsibility model' describe?",
-    options: [
-      "Multiple companies sharing one AWS account",
-      "The split between what the provider secures and what the customer secures",
-      "A pricing discount for shared workloads",
-      "A rule requiring open-source code",
-    ],
-    correct: 1,
-  },
-];
-
-const quizContainer = document.getElementById("quizContainer");
-const quizResult = document.getElementById("quizResult");
-const quizScoreEl = document.getElementById("quizScore");
-const quizMaxEl = document.getElementById("quizMax");
-let score = 0;
-let answered = 0;
-
-function renderQuiz() {
-  quizContainer.innerHTML = "";
-  quizResult.hidden = true;
-  score = 0;
-  answered = 0;
-  quizMaxEl.textContent = QUIZ.length;
-
-  QUIZ.forEach((item, qIndex) => {
-    const qEl = document.createElement("div");
-    qEl.className = "quiz-q";
-
-    const qText = document.createElement("p");
-    qText.textContent = `${qIndex + 1}. ${item.q}`;
-    qEl.appendChild(qText);
-
-    const optsEl = document.createElement("div");
-    optsEl.className = "quiz-options";
-
-    item.options.forEach((optText, optIndex) => {
-      const optBtn = document.createElement("button");
-      optBtn.className = "quiz-option";
-      optBtn.textContent = optText;
-      optBtn.addEventListener("click", () => handleAnswer(qEl, optIndex, item.correct, optBtn));
-      optsEl.appendChild(optBtn);
-    });
-
-    qEl.appendChild(optsEl);
-    quizContainer.appendChild(qEl);
-  });
+.sidebar-brand {
+    padding: 0 1.5rem 2rem 1.5rem;
+    border-bottom: 1px solid #334155;
 }
 
-function handleAnswer(qEl, chosenIndex, correctIndex, chosenBtn) {
-  const buttons = qEl.querySelectorAll(".quiz-option");
-  if (buttons[0].disabled) return; // already answered
-
-  buttons.forEach((b, i) => {
-    b.disabled = true;
-    if (i === correctIndex) b.classList.add("correct");
-  });
-  if (chosenIndex !== correctIndex) chosenBtn.classList.add("incorrect");
-  else score += 1;
-
-  answered += 1;
-  if (answered === QUIZ.length) {
-    quizScoreEl.textContent = score;
-    quizResult.hidden = false;
-  }
+.sidebar-brand h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
-document.getElementById("quizRetry").addEventListener("click", renderQuiz);
+.sidebar-brand h2 span {
+    color: #3b82f6;
+}
 
-renderQuiz();
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    gap: 0.25rem;
+    overflow-y: auto;
+}
+
+.menu-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    padding: 1rem 1.5rem 0.5rem 1.5rem;
+    font-weight: 700;
+}
+
+.menu-item {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+.menu-item.active {
+    background-color: #1e293b;
+    color: #3b82f6;
+    border-left-color: #3b82f6;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.top-bar {
+    height: 70px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    flex-shrink: 0;
+}
+
+.top-bar h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.username {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.content-body {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    position: relative;
+}
+
+.view-panel {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.25s ease-in-out forwards;
+}
+
+.view-panel.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.metric-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.metric-card h3 {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.metric-card .stat {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.metric-card p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.dashboard-showcase {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    color: #ffffff;
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.showcase-info {
+    max-width: 650px;
+}
+
+.showcase-info h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-info p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.provider-banner {
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    color: #ffffff;
+}
+
+.aws-banner { background: linear-gradient(135deg, #ff9900 0%, #ec7c11 100%); }
+.azure-banner { background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%); }
+.gcp-banner { background: linear-gradient(135deg, #34a853 0%, #1a73e8 100%); }
+
+.provider-banner h2 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.provider-banner p { color: rgba(255, 255, 255, 0.85); }
+
+.resource-block h3 {
+    font-size: 1.1rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.link-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.resource-link-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+}
+
+.resource-link-card h4 {
+    font-size: 1rem;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+}
+
+.resource-link-card p {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.quiz-container h2 { margin-bottom: 0.5rem; font-size: 1.5rem; }
+.quiz-container p { color: #64748b; margin-bottom: 2rem; }
+
+.quiz-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.quiz-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.option-btn:hover {
+    background-color: #f1f5f9;
+}
+
+.quiz-feedback-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.quiz-feedback-box.correct { background-color: #dcfce7; color: #166534; }
+.quiz-feedback-box.wrong { background-color: #fee2e2; color: #991b1b; }
+
+.hidden { display: none !important; }
