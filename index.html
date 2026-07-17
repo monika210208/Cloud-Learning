@@ -1,516 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud Deck — Learn Cloud Computing from the Rack Up</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudOps Academy Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="boot-screen" id="bootScreen">
-  <div class="boot-line">> initializing cloud-deck<span class="cursor">_</span></div>
-</div>
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>Cloud<span>Ops</span></h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-target="dashboard-view">Overview Dashboard</a>
+                <div class="menu-label">Learning Frameworks</div>
+                <a href="#aws" class="menu-item" data-target="aws-view">Amazon Web Services</a>
+                <a href="#azure" class="menu-item" data-target="azure-view">Microsoft Azure</a>
+                <a href="#gcp" class="menu-item" data-target="gcp-view">Google Cloud Platform</a>
+                <div class="menu-label">Evaluation</div>
+                <a href="#quiz" class="menu-item" data-target="quiz-view">Knowledge Check</a>
+            </nav>
+        </aside>
 
-<div class="app" id="app">
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 id="current-view-title">Overview Dashboard</h1>
+                <div class="user-profile">
+                    <span class="avatar">CC</span>
+                    <span class="username">Cloud Candidate</span>
+                </div>
+            </header>
 
-  <!-- SIDEBAR -->
-  <aside class="rack" id="rack">
-    <div class="rack-head">
-      <div class="logo">
-        <span class="logo-mark">☁</span>
-        <span class="logo-text">CLOUD<b>DECK</b></span>
-      </div>
-      <div class="progress-readout">
-        <span id="progressCount">0</span>/<span id="progressTotal">13</span> modules
-        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      </div>
+            <div class="content-body">
+
+                <!-- 1. DASHBOARD VIEW -->
+                <section id="dashboard-view" class="view-panel active">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h3>Global Provider Share</h3>
+                            <div class="stat">32% AWS / 23% Azure</div>
+                            <p>Market penetration index metrics</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Core Resource Links</h3>
+                            <div class="stat">12 Core Links</div>
+                            <p>Hand-picked documentation pathways</p>
+                        </div>
+                        <div class="metric-card">
+                            <h3>Assessment Readiness</h3>
+                            <div class="stat">Practice Arena</div>
+                            <p>Interactive testing terminal active</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-showcase">
+                        <div class="showcase-info">
+                            <h2>Strategic Cloud Target Matrix</h2>
+                            <p>Modern DevOps engineers focus cross-functionally. Select an infrastructure platform from the side interface panel to access core whitepapers, setup schemas, deployment documentation, and direct console access vectors.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. AWS VIEW -->
+                <section id="aws-view" class="view-panel">
+                    <div class="provider-banner aws-banner">
+                        <h2>Amazon Web Services Path</h2>
+                        <p>Industry-standard public infrastructure landscape.</p>
+                    </div>
+                    <div class="resource-block">
+                        <h3>Foundational Technical Documentation</h3>
+                        <div class="link-row">
+                            <a href="https://docs.aws.amazon.com/" target="_blank" class="resource-link-card">
+                                <h4>AWS Documentation Portal</h4>
+                                <p>Comprehensive API reference sheets and technical user manuals.</p>
+                            </a>
+                            <a href="https://aws.amazon.com/architecture/" target="_blank" class="resource-link-card">
+                                <h4>AWS Architecture Framework Center</h4>
+                                <p>Well-architected structural design blueprints and reference schemas.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="resource-block">
+                        <h3>Console & Operational Execution Environments</h3>
+                        <div class="link-row">
+                            <a href="https://aws.amazon.com/console/" target="_blank" class="resource-link-card">
+                                <h4>AWS Management Console Portal</h4>
+                                <p>Primary interface node for resource deployment and terminal access.</p>
+                            </a>
+                            <a href="https://aws.amazon.com/free/" target="_blank" class="resource-link-card">
+                                <h4>AWS Tier Access Sandbox</h4>
+                                <p>Free operating parameters for sandbox infrastructure accounts.</p>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. AZURE VIEW -->
+                <section id="azure-view" class="view-panel">
+                    <div class="provider-banner azure-banner">
+                        <h2>Microsoft Azure Framework</h2>
+                        <p>Enterprise system standard integrations.</p>
+                    </div>
+                    <div class="resource-block">
+                        <h3>Core Documentation Engines</h3>
+                        <div class="link-row">
+                            <a href="https://learn.microsoft.com/azure/" target="_blank" class="resource-link-card">
+                                <h4>Microsoft Azure Documentation Hub</h4>
+                                <p>Technical manuals covering structural hybrid architectures.</p>
+                            </a>
+                            <a href="https://learn.microsoft.com/azure/architecture/" target="_blank" class="resource-link-card">
+                                <h4>Azure Cloud Architecture Index</h4>
+                                <p>Validated templates and corporate pattern guidelines.</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="resource-block">
+                        <h3>Console Gateways</h3>
+                        <div class="link-row">
+                            <a href="https://portal.azure.com/" target="_blank" class="resource-link-card">
+                                <h4>Azure Management Control Panel</h4>
+                                <p>Deployment interface for enterprise services and structural configurations.</p>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. GCP VIEW -->
+                <section id="gcp-view" class="view-panel">
+                    <div class="provider-banner gcp-banner">
+                        <h2>Google Cloud Platform Workspace</h2>
+                        <p>Specialized engine for container logic and data processing matrices.</p>
+                    </div>
+                    <div class="resource-block">
+                        <h3>Infrastructure Specification Documents</h3>
+                        <div class="link-row">
+                            <a href="https://cloud.google.com/docs" target="_blank" class="resource-link-card">
+                                <h4>Google Cloud Documentation Framework</h4>
+                                <p>System infrastructure configuration documentation libraries.</p>
+                            </a>
+                            <a href="https://cloud.google.com/architecture" target="_blank" class="resource-link-card">
+                                <h4>GCP Technical Architecture Blueprints</h4>
+                                <p>Detailed setup guides for Kubernetes layouts and storage systems.</p>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. QUIZ VIEW -->
+                <section id="quiz-view" class="view-panel">
+                    <div class="quiz-container">
+                        <h2>Cloud Architecture Evaluation Terminal</h2>
+                        <p>Validate your core knowledge infrastructure principles.</p>
+                        <div class="quiz-card">
+                            <h3 id="quiz-question">Loading evaluation parameters...</h3>
+                            <div class="quiz-options">
+                                <button class="option-btn" data-idx="0"></button>
+                                <button class="option-btn" data-idx="1"></button>
+                                <button class="option-btn" data-idx="2"></button>
+                                <button class="option-btn" data-idx="3"></button>
+                            </div>
+                            <div id="quiz-feedback" class="quiz-feedback-box hidden"></div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
     </div>
 
-    <nav class="rack-units" id="rackUnits">
-      <!-- populated by JS -->
-    </nav>
-
-    <div class="rack-foot">
-      <span class="status-dot on"></span> system nominal
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <!-- HERO / CH 00 -->
-    <section class="panel hero" data-panel="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">// a self-paced curriculum</p>
-        <h1>Learn cloud computing<br> the way it's actually built —<br><span class="accent">layer by layer.</span></h1>
-        <p class="hero-sub">Thirteen modules. From "what is a hypervisor" to writing your own Terraform and Kubernetes manifests. Every concept ships with runnable code, not just slides.</p>
-        <div class="hero-actions">
-          <button class="btn btn-primary" data-goto="ch01">Start at Module 01 →</button>
-          <button class="btn btn-ghost" data-goto="quiz">Jump to the assessment</button>
-        </div>
-      </div>
-
-      <div class="hero-stack" aria-hidden="true">
-        <svg viewBox="0 0 360 320" class="stack-svg">
-          <ellipse cx="180" cy="46" rx="120" ry="34" class="cloud-glow"/>
-          <path class="cloud-shape" d="M70 60c-22 0-40 16-40 36 0 4 .4 7 1 10-14 4-24 16-24 31 0 18 16 33 36 33h214c20 0 36-15 36-33 0-16-12-29-28-32 1-3 1-6 1-10 0-22-19-40-43-40-9 0-17 2-24 7-9-13-25-22-43-22-24 0-45 15-52 36-3-1-6-2-10-2-11 0-20 3-25 9-1-14-1-24 1-30z"/>
-          <text x="180" y="70" text-anchor="middle" class="cloud-label">SaaS</text>
-
-          <g class="rack-layer" data-layer="paas">
-            <rect x="60" y="140" width="240" height="46" rx="4"/>
-            <text x="80" y="168">PaaS runtime</text>
-            <circle cx="272" cy="163" r="4" class="led led-a"/>
-            <circle cx="286" cy="163" r="4" class="led led-b"/>
-          </g>
-
-          <g class="rack-layer" data-layer="iaas">
-            <rect x="60" y="196" width="240" height="46" rx="4"/>
-            <text x="80" y="224">IaaS compute + storage</text>
-            <circle cx="272" cy="219" r="4" class="led led-a"/>
-            <circle cx="286" cy="219" r="4" class="led led-b"/>
-          </g>
-
-          <g class="rack-layer" data-layer="hw">
-            <rect x="60" y="252" width="240" height="46" rx="4"/>
-            <text x="80" y="280">Physical data center</text>
-            <circle cx="272" cy="275" r="4" class="led led-a"/>
-            <circle cx="286" cy="275" r="4" class="led led-b"/>
-          </g>
-        </svg>
-        <p class="stack-caption">fig. 1 — everything you'll build sits on this stack</p>
-      </div>
-    </section>
-
-    <!-- CH 01 -->
-    <section class="panel" data-panel="ch01" id="ch01">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.01</span>
-        <h2>What Cloud Computing Actually Is</h2>
-      </header>
-
-      <p>Cloud computing is the delivery of computing resources — servers, storage, databases, networking, software — over the internet, on demand, billed for what you use. The five traits that separate a "cloud" from a rented server:</p>
-
-      <div class="trait-grid">
-        <div class="trait"><span class="trait-n">01</span><h4>On-demand self-service</h4><p>Provision compute without calling a human.</p></div>
-        <div class="trait"><span class="trait-n">02</span><h4>Broad network access</h4><p>Available over standard internet protocols, from anything.</p></div>
-        <div class="trait"><span class="trait-n">03</span><h4>Resource pooling</h4><p>Multi-tenant hardware, dynamically assigned.</p></div>
-        <div class="trait"><span class="trait-n">04</span><h4>Rapid elasticity</h4><p>Scale out in seconds, scale in just as fast.</p></div>
-        <div class="trait"><span class="trait-n">05</span><h4>Measured service</h4><p>Metered like electricity — pay for consumption.</p></div>
-      </div>
-
-      <div class="code-block" data-lang="bash">
-<pre><code># The entire mental model, demonstrated:
-# "give me a server" becomes an API call instead of a purchase order
-
-curl -X POST https://api.cloudprovider.example/v1/instances \
-  -H "Authorization: Bearer $API_TOKEN" \
-  -d '{"type": "small", "image": "ubuntu-24.04", "region": "ap-south-1"}'
-
-# response arrives in ~2 seconds with a running machine's IP
-</code></pre>
-      </div>
-
-      <div class="callout">
-        <strong>Why it matters:</strong> before cloud computing, "we need more capacity" meant buying physical servers with weeks of lead time. Now it means changing a number.
-      </div>
-    </section>
-
-    <!-- CH 02 -->
-    <section class="panel" data-panel="ch02" id="ch02">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.02</span>
-        <h2>Deployment Models</h2>
-      </header>
-      <p>Deployment model answers: <em>who owns the underlying infrastructure, and who else shares it?</em></p>
-
-      <div class="compare-grid">
-        <div class="compare-card">
-          <h4>Public Cloud</h4>
-          <p>Owned by a third party (AWS, Azure, GCP), shared across customers. Lowest cost, fastest to start, least control.</p>
-        </div>
-        <div class="compare-card">
-          <h4>Private Cloud</h4>
-          <p>Dedicated to one organization, on-prem or hosted. Full control, higher cost, used for strict compliance needs.</p>
-        </div>
-        <div class="compare-card">
-          <h4>Hybrid Cloud</h4>
-          <p>Public and private linked together — e.g. keep customer data on-prem, burst compute to the public cloud.</p>
-        </div>
-        <div class="compare-card">
-          <h4>Community Cloud</h4>
-          <p>Shared by several organizations with common concerns — e.g. government agencies sharing a compliance-certified cloud.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CH 03 -->
-    <section class="panel" data-panel="ch03" id="ch03">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.03</span>
-        <h2>Service Models — IaaS, PaaS, SaaS</h2>
-      </header>
-      <p>The stack from the hero diagram, with who manages what at each layer:</p>
-
-      <div class="responsibility-table">
-        <table>
-          <thead><tr><th>Layer</th><th>You manage</th><th>Provider manages</th><th>Example</th></tr></thead>
-          <tbody>
-            <tr><td>IaaS</td><td>OS, runtime, apps, data</td><td>Servers, storage, network, virtualization</td><td>AWS EC2, Azure VMs</td></tr>
-            <tr><td>PaaS</td><td>App code, data</td><td>OS, runtime, scaling, patching</td><td>Heroku, Google App Engine</td></tr>
-            <tr><td>SaaS</td><td>Your usage/config only</td><td>Everything else</td><td>Gmail, Salesforce</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="code-block" data-lang="python">
-<pre><code># IaaS: you write the server yourself (Flask on a VM you provisioned)
-from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Running on a VM I patched and scaled myself."
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
-</code></pre>
-      </div>
-
-      <div class="code-block" data-lang="yaml">
-<pre><code># PaaS: same app, deployed with a manifest — no server management
-name: my-app
-runtime: python3.12
-instances: 2
-routes:
-  - "/*"
-</code></pre>
-      </div>
-    </section>
-
-    <!-- CH 04 -->
-    <section class="panel" data-panel="ch04" id="ch04">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.04</span>
-        <h2>Virtualization &amp; Hypervisors</h2>
-      </header>
-      <p>Virtualization is the trick that makes clouds economical: one physical machine, sliced into many isolated virtual machines by a <strong>hypervisor</strong>.</p>
-
-      <ul class="concept-list">
-        <li><strong>Type 1 (bare-metal)</strong> — runs directly on hardware: VMware ESXi, Xen, Microsoft Hyper-V, KVM. Used inside real data centers.</li>
-        <li><strong>Type 2 (hosted)</strong> — runs inside a host OS: VirtualBox, VMware Workstation. Used for local dev/testing.</li>
-      </ul>
-
-      <div class="code-block" data-lang="bash">
-<pre><code># Creating a KVM virtual machine from the command line
-virt-install \
-  --name web01 \
-  --memory 2048 --vcpus 2 \
-  --disk size=20 \
-  --os-variant ubuntu24.04 \
-  --network network=default \
-  --cdrom /isos/ubuntu-24.04.iso
-</code></pre>
-      </div>
-
-      <div class="callout">Each VM believes it owns the whole machine — its own kernel, its own virtual CPU, disk, and NIC — while the hypervisor quietly schedules real hardware underneath.</div>
-    </section>
-
-    <!-- CH 05 -->
-    <section class="panel" data-panel="ch05" id="ch05">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.05</span>
-        <h2>Containers &amp; Docker</h2>
-      </header>
-      <p>Containers skip the "full extra OS" cost of a VM. They share the host kernel and isolate only the process, filesystem, and network — starting in milliseconds instead of minutes.</p>
-
-      <div class="code-block" data-lang="dockerfile">
-<pre><code># Dockerfile — packages a Node.js API into a portable image
-FROM node:20-slim
-
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --omit=dev
-
-COPY . .
-EXPOSE 3000
-USER node
-
-CMD ["node", "server.js"]
-</code></pre>
-      </div>
-
-      <div class="code-block" data-lang="bash">
-<pre><code># Build once, run anywhere the same way
-docker build -t my-api:1.0 .
-docker run -d -p 3000:3000 --name api my-api:1.0
-
-docker ps
-docker logs -f api
-</code></pre>
-      </div>
-    </section>
-
-    <!-- CH 06 -->
-    <section class="panel" data-panel="ch06" id="ch06">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.06</span>
-        <h2>Orchestration — Kubernetes</h2>
-      </header>
-      <p>Once you have more than a handful of containers, you need something to schedule, heal, and scale them. Kubernetes is the industry-standard orchestrator.</p>
-
-      <div class="code-block" data-lang="yaml">
-<pre><code># deployment.yaml — 3 replicas of the API, self-healing
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-api
-spec:
-  replicas: 3
-  selector:
-    matchLabels: {app: my-api}
-  template:
-    metadata:
-      labels: {app: my-api}
-    spec:
-      containers:
-        - name: my-api
-          image: my-api:1.0
-          ports: [{containerPort: 3000}]
-          resources:
-            requests: {cpu: "100m", memory: "128Mi"}
-            limits:   {cpu: "500m", memory: "256Mi"}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-api-svc
-spec:
-  selector: {app: my-api}
-  ports: [{port: 80, targetPort: 3000}]
-  type: LoadBalancer
-</code></pre>
-      </div>
-
-      <div class="code-block" data-lang="bash">
-<pre><code>kubectl apply -f deployment.yaml
-kubectl get pods -w
-kubectl scale deployment my-api --replicas=6
-</code></pre>
-      </div>
-    </section>
-
-    <!-- CH 07 -->
-    <section class="panel" data-panel="ch07" id="ch07">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.07</span>
-        <h2>Cloud Storage &amp; Databases</h2>
-      </header>
-
-      <div class="compare-grid">
-        <div class="compare-card"><h4>Object storage</h4><p>Flat namespace of immutable blobs. S3, Azure Blob, GCS. Great for media, backups, logs.</p></div>
-        <div class="compare-card"><h4>Block storage</h4><p>Raw disk volumes attached to a VM. EBS, Azure Disks. Needed for databases and OS disks.</p></div>
-        <div class="compare-card"><h4>File storage</h4><p>Shared filesystem over NFS/SMB. EFS, Azure Files. Good for multi-VM shared access.</p></div>
-        <div class="compare-card"><h4>Managed databases</h4><p>RDS, Cloud SQL, DynamoDB — provider handles backups, patching, failover.</p></div>
-      </div>
-
-      <div class="code-block" data-lang="python">
-<pre><code># Uploading to object storage (S3-compatible API)
-import boto3
-
-s3 = boto3.client("s3", region_name="ap-south-1")
-s3.upload_file("report.csv", "my-data-bucket", "reports/2026/report.csv")
-
-s3.put_object(
-    Bucket="my-data-bucket",
-    Key="reports/2026/report.csv",
-    Tagging="retention=365days"
-)
-</code></pre>
-      </div>
-    </section>
-
-    <!-- CH 08 -->
-    <section class="panel" data-panel="ch08" id="ch08">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.08</span>
-        <h2>Cloud Networking</h2>
-      </header>
-      <p>A <strong>VPC</strong> (Virtual Private Cloud) is your own isolated network slice inside the provider's data center — subnets, route tables, gateways, firewalls, all software-defined.</p>
-
-      <div class="code-block" data-lang="hcl">
-<pre><code># A minimal VPC with a public and private subnet (Terraform)
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block         = "10.0.1.0/24"
-  map_public_ip_on_launch = true
-}
-
-resource "aws_subnet" "private" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.2.0/24"
-}
-</code></pre>
-      </div>
-
-      <ul class="concept-list">
-        <li><strong>Load balancer</strong> — spreads traffic across healthy instances (e.g. ALB, NGINX, HAProxy).</li>
-        <li><strong>CDN</strong> — caches content at edge locations near users to cut latency (CloudFront, Cloudflare, Akamai).</li>
-        <li><strong>DNS</strong> — routes domain names to the right load balancer or IP (Route 53, Cloud DNS).</li>
-      </ul>
-    </section>
-
-    <!-- CH 09 -->
-    <section class="panel" data-panel="ch09" id="ch09">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.09</span>
-        <h2>Serverless Computing</h2>
-      </header>
-      <p>Serverless doesn't mean "no servers" — it means you never think about them. You ship a function; the platform runs it on-demand and bills per invocation.</p>
-
-      <div class="code-block" data-lang="python">
-<pre><code># AWS Lambda handler — resizes an image whenever one lands in S3
-import boto3
-from PIL import Image
-import io
-
-s3 = boto3.client("s3")
-
-def handler(event, context):
-    record = event["Records"][0]["s3"]
-    bucket, key = record["bucket"]["name"], record["object"]["key"]
-
-    obj = s3.get_object(Bucket=bucket, Key=key)
-    img = Image.open(io.BytesIO(obj["Body"].read()))
-    img.thumbnail((200, 200))
-
-    buf = io.BytesIO()
-    img.save(buf, "JPEG")
-    s3.put_object(Bucket=bucket, Key=f"thumbs/{key}", Body=buf.getvalue())
-
-    return {"statusCode": 200}
-</code></pre>
-      </div>
-
-      <div class="callout">You pay per millisecond of execution, not per idle hour. The tradeoff: cold starts, execution time limits, and less control over the runtime.</div>
-    </section>
-
-    <!-- CH 10 -->
-    <section class="panel" data-panel="ch10" id="ch10">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.10</span>
-        <h2>Security &amp; Identity (IAM)</h2>
-      </header>
-      <p>Cloud security runs on the <strong>shared responsibility model</strong>: the provider secures the cloud (physical data centers, hypervisor); you secure what's <em>in</em> the cloud (data, access, configuration).</p>
-
-      <div class="code-block" data-lang="json">
-<pre><code>{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": ["s3:GetObject", "s3:PutObject"],
-      "Resource": "arn:aws:s3:::my-data-bucket/reports/*",
-      "Condition": {
-        "IpAddress": {"aws:SourceIp": "203.0.113.0/24"}
-      }
-    }
-  ]
-}
-</code></pre>
-      </div>
-
-      <ul class="concept-list">
-        <li><strong>Least privilege</strong> — grant only the permissions a role strictly needs.</li>
-        <li><strong>Encryption at rest &amp; in transit</strong> — TLS on the wire, KMS-managed keys on disk.</li>
-        <li><strong>MFA everywhere</strong> — especially on the account root/owner identity.</li>
-      </ul>
-    </section>
-
-    <!-- CH 11 -->
-    <section class="panel" data-panel="ch11" id="ch11">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.11</span>
-        <h2>DevOps, CI/CD &amp; Infrastructure as Code</h2>
-      </header>
-      <p>Cloud maturity shows up as automation: infrastructure defined in version-controlled code, deployed through a pipeline instead of a person clicking a console.</p>
-
-      <div class="code-block" data-lang="yaml">
-<pre><code># .github/workflows/deploy.yml
-name: deploy
-on: {push: {branches: [main]}}
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: docker build -t my-api:${{ github.sha }} .
-      - run: docker push my-api:${{ github.sha }}
-      - run: kubectl set image deployment/my-api my-api=my-api:${{ github.sha }}
-</code></pre>
-      </div>
-
-      <div class="callout">"Infrastructure as Code" (Terraform, Pulumi, CloudFormation) means your VPC, databases, and clusters are text files reviewed in pull requests — reproducible and diffable, not a snowflake console someone clicked once in 2022.</div>
-    </section>
-
-    <!-- CH 12 -->
-    <section class="panel" data-panel="ch12" id="ch12">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.12</span>
-        <h2>Cost Optimization &amp; Monitoring</h2>
-      </header>
-
-      <ul class="concept-list">
-        <li><strong>Right-sizing</strong> — matching instance size to actual CPU/memory usage instead of guessing high.</li>
-        <li><strong>Reserved / spot capacity</strong> — commit ahead for a discount, or use spare capacity for interruptible workloads at up to 90% off.</li>
-        <li><strong>Autoscaling</strong> — scale out under load, scale to zero when idle.</li>
-        <li><strong>Observability</strong> — metrics, logs, and traces (CloudWatch, Prometheus + Grafana, Datadog) so you know <em>why</em> something costs what it costs or broke.</li>
-      </ul>
-
-      <div class="code-block" data-lang="yaml">
-<pre><code># Kubernetes Horizontal Pod Autoscaler
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata: {name: my-api-hpa}
-spec:
-  scaleTargetRef: {apiVersion: apps/v1, kind: Deployment, name: my-api}
-  minReplicas: 2
-  maxReplicas: 10
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target: {type: Utilization, averageUtilization: 60}
-</code></pre>
-      </div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="panel" data-panel="quiz" id="quiz">
-      <header class="panel-head">
-        <span class="chapter-tag">CH.13</span>
-        <h2>Assessment</h2>
-      </header>
-      <p>Ten questions across everything above. Score is kept in this browser only.</p>
-
-      <div id="quizContainer" class="quiz-container"></div>
-
-      <div class="quiz-result" id="quizResult" hidden>
-        <p><span id="quizScore">0</span>/<span id="quizMax">10</span> correct</p>
-        <button class="btn btn-ghost" id="quizRetry">Retry</button>
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
