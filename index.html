@@ -18,7 +18,7 @@
             
             <nav class="navigation-menu">
                 <div class="menu-group-label">Architecture Core</div>
-                <a href="#introduction" class="nav-node active">Introduction</a>
+                <a href="#introduction" class="nav-node active">Introduction & Standards</a>
                 <a href="#service-models" class="nav-node">Service Layer Matrix</a>
                 <a href="#deployment-models" class="nav-node">Deployment Topology</a>
                 
@@ -31,7 +31,7 @@
                 <div class="status-indicator"></div>
                 <div class="status-text">
                     <p class="status-title">System Status</p>
-                    <p class="status-desc">All Modules Online</p>
+                    <p class="status-desc">Production Reference Ready</p>
                 </div>
             </div>
         </aside>
@@ -41,44 +41,49 @@
 
             <!-- Section 1: Intro Engine -->
             <section id="introduction" class="content-segment">
-                <div class="pill-accent">The Definitive Reference</div>
+                <a href="https://roadmap.sh/cloud-engineer" target="_blank" class="pill-accent-link">
+                    Enterprise Engineering Roadmap &rarr;
+                </a>
                 <h1 class="display-title">Cloud Computing:<br><span class="gradient-text">A Complete Guide</span></h1>
-                <p class="lead-paragraph">Master cloud computing from the ground up. An authoritative, deeply technical learning hub for students, developers, and IT professionals aiming to understand the architectures that power the modern web.</p>
+                <p class="lead-paragraph">Master cloud computing from the ground up. An authoritative, deeply technical learning hub for students, developers, and IT professionals aiming to understand the distributed systems, automation pipelines, and architectures that power modern global infrastructure.</p>
                 
                 <div class="metrics-dashboard">
-                    <div class="metric-tile">
-                        <span class="value">15</span>
-                        <span class="label">Core Modules</span>
-                    </div>
-                    <div class="metric-tile">
-                        <span class="value">3</span>
-                        <span class="label">Major Providers</span>
-                    </div>
-                    <div class="metric-tile">
-                        <span class="value">∞</span>
-                        <span class="label">Scalability</span>
-                    </div>
-                    <div class="metric-tile">
-                        <span class="value">Zero</span>
-                        <span class="label">Fluff</span>
-                    </div>
+                    <a href="https://aws.amazon.com/what-is-cloud-computing/" target="_blank" class="metric-tile-link">
+                        <span class="value">AWS</span>
+                        <span class="label">Well-Architected Framework</span>
+                    </a>
+                    <a href="https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-cloud-computing/" target="_blank" class="metric-tile-link">
+                        <span class="value">Azure</span>
+                        <span class="label">Cloud Design Patterns</span>
+                    </a>
+                    <a href="https://cloud.google.com/learn/what-is-cloud-computing" target="_blank" class="metric-tile-link">
+                        <span class="value">GCP</span>
+                        <span class="label">Site Reliability Engineering</span>
+                    </a>
+                    <a href="https://github.com/collections/open-source-cloud-architectures" target="_blank" class="metric-tile-link">
+                        <span class="value">Git</span>
+                        <span class="label">Open Architecture Specs</span>
+                    </a>
                 </div>
 
                 <div class="terminal-card">
                     <div class="terminal-header">
                         <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                        <span class="terminal-title">NIST Core Definition</span>
+                        <span class="terminal-title">NIST Core Definition (SP 800-145)</span>
                     </div>
                     <div class="terminal-body">
                         <p class="terminal-text">"Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction."</p>
+                        <p class="terminal-footer-link">
+                            Source Document: <a href="https://csrc.nist.gov/publications/detail/sp/800-145/final" target="_blank">NIST Special Publication 800-145 Official Release</a>
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 2: Interactive Tabs (Service Models) -->
+            <!-- Section 2: Service Models -->
             <section id="service-models" class="content-segment">
                 <h2 class="segment-title">Cloud Service Models</h2>
-                <p class="segment-desc">Toggle across execution layers to inspect how the distribution of infrastructure and code management changes depending on business logic requirements.</p>
+                <p class="segment-desc">Toggle across execution layers to inspect the Shared Responsibility Model, mapping exactly how the distribution of infrastructure, virtualization, and code management shifts between cloud vendor and consumer.</p>
 
                 <div class="tabbed-interface-container">
                     <div class="tab-selectors">
@@ -88,50 +93,47 @@
                     </div>
 
                     <div class="tab-view-window">
-                        <!-- IaaS Info -->
                         <div id="iaas-content" class="tab-panel active">
                             <h3>Infrastructure as a Service (IaaS)</h3>
-                            <p class="panel-intro-text">Provides fundamental computing, storage, and networking resources on demand, allowing absolute configuration control over base hypervisor distributions.</p>
+                            <p class="panel-intro-text">Provides raw compute, block storage, and software-defined networking primitives. Offers maximum architectural flexibility, leaving OS kernel tuning, routing rules, and data schemas entirely in your hands.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed</h4>
-                                    <p>Physical datacenters, bare-metal server nodes, raw storage disks, hardware routers, and base hypervisor engines.</p>
+                                    <h4>Provider Managed Infrastructure</h4>
+                                    <p>Physical plant facilities, power distribution units, climate systems, optical networking arrays, bare-metal server chassis, and Type-1 Hypervisors.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed</h4>
-                                    <p>Operating System layers, runtime components, intermediate middleware libraries, database layers, and application binaries.</p>
+                                    <h4>User Managed Configuration</h4>
+                                    <p>Guest Operating System distributions (patching, security configurations), file systems, network firewalls, container engines, middleware, and application code.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- PaaS Info -->
                         <div id="paas-content" class="tab-panel">
                             <h3>Platform as a Service (PaaS)</h3>
-                            <p class="panel-intro-text">Removes the friction of managing underlying operating systems and runtime clusters, empowering rapid application scaling loops.</p>
+                            <p class="panel-intro-text">Removes the operational overhead of server patching, capacity provisioning, and OS maintenance. Abstracted runtimes let developers focus entirely on application logical components and database configurations.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed</h4>
-                                    <p>Operating system patching, raw physical networks, virtualization orchestration systems, runtime execution contexts (e.g., Node JS, Python Engine).</p>
+                                    <h4>Provider Managed Infrastructure</h4>
+                                    <p>Automated OS patch lifecycles, memory allocation pooling, runtime compilation environments (Node.js, JVM, CLR), load balancer pools, and cluster management tools.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed</h4>
-                                    <p>Application source code logic, integration parameters, environmental data mappings, and microservice route layouts.</p>
+                                    <h4>User Managed Configuration</h4>
+                                    <p>Application source files, API routes, data persistence configurations, access keys, webhook pipelines, and fine-grained environment variables.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- SaaS Info -->
                         <div id="saas-content" class="tab-panel">
                             <h3>Software as a Service (SaaS)</h3>
-                            <p class="panel-intro-text">Delivers fully complete software frameworks managed from database engine to frontend display entirely by the distribution vendor.</p>
+                            <p class="panel-intro-text">A completely centralized deployment strategy where the application stack is entirely executed and maintained by a third-party vendor, consumed over the web via secure endpoints or specialized desktop thin clients.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed</h4>
-                                    <p>100% of the architecture stack, including code compilation, security patches, data persistence configurations, and presentation sheets.</p>
+                                    <h4>Provider Managed Infrastructure</h4>
+                                    <p>100% of the architecture including physical infrastructure, databases, UI rendering, scaling mechanisms, security patches, and application logical bugs.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed</h4>
-                                    <p>End-user authentication permissions, client-side application settings configurations, and basic custom workspace access inputs.</p>
+                                    <h4>User Managed Configuration</h4>
+                                    <p>Granular RBAC (Role-Based Access Control) user seats, tenant preference parameters, notification policies, and custom third-party OAuth integrations.</p>
                                 </div>
                             </div>
                         </div>
@@ -142,28 +144,28 @@
             <!-- Section 3: Topology Models -->
             <section id="deployment-models" class="content-segment">
                 <h2 class="segment-title">Cloud Deployment Models</h2>
-                <p class="segment-desc">Structural isolation schemas defining ownership parameters, host tenancy, and hardware locations.</p>
+                <p class="segment-desc">Structural isolation schemas defining ownership boundaries, multi-tenancy rules, compliance vectors, and physical hardware geographies.</p>
 
                 <div class="topology-grid">
                     <div class="topology-card">
                         <div class="card-glow"></div>
-                        <h3>Public Cloud Matrix</h3>
-                        <p>Shared physical hardware multi-tenancy configurations, owned completely by the public hosting provider and provisioned via programmatic APIs over secure public networks.</p>
+                        <h3>Public Cloud Topology</h3>
+                        <p>Dynamic multi-tenant environments where massive physical server capacity is shared across independent customers. Sub-millisecond isolation is strictly maintained at the hypervisor and Software-Defined Networking (SDN) layers.</p>
                         <div class="tech-stack-row">
-                            <span class="tech-tag">AWS EC2</span>
-                            <span class="tech-tag">Azure VM</span>
-                            <span class="tech-tag">GCP Compute Engine</span>
+                            <a href="https://aws.amazon.com/ec2/" target="_blank" class="tech-tag-link">AWS EC2 Specs</a>
+                            <a href="https://azure.microsoft.com/en-us/products/virtual-machines/" target="_blank" class="tech-tag-link">Azure Compute docs</a>
+                            <a href="https://cloud.google.com/compute" target="_blank" class="tech-tag-link">GCP Engine Docs</a>
                         </div>
                     </div>
 
                     <div class="topology-card">
                         <div class="card-glow"></div>
-                        <h3>Private Cloud Architecture</h3>
-                        <p>Dedicated single-tenant infrastructure arrays isolated inside explicit user corporate firewalls. Located inside corporate physical datacenters or isolated bare-metal lease options.</p>
+                        <h3>Private Cloud Topology</h3>
+                        <p>Single-tenant private infrastructure dedicated to one enterprise entity. Configured inside on-premises enterprise data centers or off-premises co-location hubs to comply with tight air-gapped security and data sovereignty policies.</p>
                         <div class="tech-stack-row">
-                            <span class="tech-tag">OpenStack</span>
-                            <span class="tech-tag">VMware vSphere</span>
-                            <span class="tech-tag">Nutanix</span>
+                            <a href="https://www.openstack.org" target="_blank" class="tech-tag-link">OpenStack Architecture</a>
+                            <a href="https://www.vmware.com/products/vsphere.html" target="_blank" class="tech-tag-link">VMware vSphere Reference</a>
+                            <a href="https://www.nutanix.com" target="_blank" class="tech-tag-link">Nutanix Hyperconverged</a>
                         </div>
                     </div>
                 </div>
@@ -172,24 +174,24 @@
             <!-- Section 4: Virtualization Engine -->
             <section id="virtualization" class="content-segment">
                 <h2 class="segment-title">VMs vs Containers Architecture</h2>
-                <p class="segment-desc">Understanding the mechanical difference between full machine abstraction loops and operating system-level process sandboxing environments.</p>
+                <p class="segment-desc">Deep comparison of modern runtime execution. The foundational choice dictates computing efficiency, application delivery cadence, and infrastructure cost.</p>
 
                 <div class="comparison-flex">
                     <div class="comparison-block">
-                        <div class="block-label">Virtual Machines Layout</div>
+                        <div class="block-label">Virtual Machines (Hardware Abstraction)</div>
                         <ul class="spec-list">
-                            <li><strong>Hypervisor Node:</strong> Operates directly on the bare metal framework or host OS layer to partition core CPU/RAM matrices.</li>
-                            <li><strong>Guest OS Layer:</strong> Each application environment demands a full operational kernel package footprint, resulting in heavy memory utilization overhead metrics.</li>
-                            <li><strong>Isolation Metric:</strong> Hardware-level security borders managed securely via hypervisor virtualization instructions.</li>
+                            <li><strong>Hypervisor Isolation:</strong> Uses a Type-1 or Type-2 hypervisor to partition raw CPU, memory, and PCIe lanes into independent segments. For deep architectural implementation details, read the <a href="https://www.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.html" target="_blank" class="inline-body-link">Intel VT-x Specs</a>.</li>
+                            <li><strong>Guest OS Burden:</strong> Each virtual instance runs a complete, heavy guest operating system kernel, requiring gigabytes of disk and RAM footprint alongside long boot sequences.</li>
+                            <li><strong>Hardware Security Boundary:</strong> Strong isolation verified at the CPU microcode level, making it highly secure for executing untrusted, isolated code execution loops.</li>
                         </ul>
                     </div>
 
                     <div class="comparison-block">
-                        <div class="block-label">Container Engine Layout</div>
+                        <div class="block-label">Containers (OS Kernel Abstraction)</div>
                         <ul class="spec-list">
-                            <li><strong>Container Daemon:</strong> Leverages the underlying single host kernel environment directly without intermediate machine instruction mappings.</li>
-                            <li><strong>Shared Core Kernel:</strong> Strips down guest operating systems requirements. Applications load instantly as lightweight execution namespaces.</li>
-                            <li><strong>Isolation Metric:</strong> Isolated via native Linux Namespace frameworks and Control Groups (cgroups) management engines.</li>
+                            <li><strong>Kernel Space Sharing:</strong> Containers run directly as isolated processes on the host operating system kernel, eliminating hypervisor overhead and achieving near bare-metal operational execution.</li>
+                            <li><strong>Primitive Control Blocks:</strong> Uses standard Linux native namespaces (isolating PID, Mount, Net) and Control Groups (cgroups for memory/CPU capping). Study the engineering specifics at the <a href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html" target="_blank" class="inline-body-link">Linux Kernel Archive</a>.</li>
+                            <li><strong>Rapid Microservices Lifecycle:</strong> Instant boot-up speeds (milliseconds) and tiny image sizes (megabytes) enable agile immutable CI/CD software scaling loops.</li>
                         </ul>
                     </div>
                 </div>
@@ -198,28 +200,28 @@
             <!-- Section 5: Accordion Framework -->
             <section id="characteristics" class="content-segment">
                 <h2 class="segment-title">The 5 Essential Characteristics</h2>
-                <p class="segment-desc">The foundation architectural pillars that classify systems under true cloud automation guidelines.</p>
+                <p class="segment-desc">The five absolute architectural features that mathematically distinguish cloud infrastructures from standard traditional server colocation centers.</p>
 
                 <div class="interactive-accordion-stack">
                     <div class="acc-wrapper">
                         <div class="acc-header">On-Demand Self-Service</div>
-                        <div class="acc-body">Users pull compute nodes, processing channels, and database space dynamically without manual enterprise helpdesk interventions.</div>
+                        <div class="acc-body">Consumers provision storage, compute, and cluster routing configurations automatically through automated API control panels and infrastructure-as-code scripts, without needing manual human intervention from the provider's operations staff.</div>
                     </div>
                     <div class="acc-wrapper">
                         <div class="acc-header">Broad Network Access</div>
-                        <div class="acc-body">Services render seamlessly over public routing topologies via standard thin or thick client architectures.</div>
+                        <div class="acc-body">Capabilities are accessible over public or private networks through standardized protocols (HTTP, gRPC, WebSockets), enabling thin and thick clients alike (smartphones, enterprise laptops, headless IoT clusters) to consume services globally.</div>
                     </div>
                     <div class="acc-wrapper">
                         <div class="acc-header">Multi-Tenant Resource Pooling</div>
-                        <div class="acc-body">Provider physical compute modules pool together seamlessly, mapping allocations inside multi-tenant hardware layers dynamically.</div>
+                        <div class="acc-body">The provider's hardware assets are unified inside deep resource matrices to serve multiple consumers simultaneously. Physical processors, disk drives, and cache modules are dynamically mapped, reassigned, and isolated at runtime according to real-time consumer requests.</div>
                     </div>
                     <div class="acc-wrapper">
                         <div class="acc-header">Rapid Elasticity & Scale</div>
-                        <div class="acc-body">Orchestration layers handle automated threshold responses, matching storage allocations vertically or horizontally matching resource stress profiles.</div>
+                        <div class="acc-body">Services can be scaled horizontally or vertically automatically based on computational load profiles. To the user, provisioning feels completely infinite, allowing systems to scale from a single container node to a massive thousands-node cluster within minutes.</div>
                     </div>
                     <div class="acc-wrapper">
                         <div class="acc-header">Measured Service Billing</div>
-                        <div class="acc-body">System execution meters processing variables, matching API utilization records to clear transparent cost matrices.</div>
+                        <div class="acc-body">Cloud resources are monitored transparently via metering telemetry algorithms at a high level of granularity (e.g., per gigabyte-hour, per million API invocations, or per compute vCPU minute). Resource consumption metrics can be mapped directly to chargeback reporting schemas.</div>
                     </div>
                 </div>
             </section>
