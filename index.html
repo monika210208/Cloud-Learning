@@ -3,173 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudOps Academy Dashboard</title>
+    <title>CloudLearn_ | The Definitive Reference</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="dashboard-container">
+    <div class="app-layout">
         
+        <!-- Persistent Sidebar -->
         <aside class="sidebar">
-            <div class="sidebar-brand">
-                <h2>Cloud<span>Ops</span></h2>
-            </div>
-            <nav class="sidebar-menu">
-                <a href="#dashboard" class="menu-item active" data-target="dashboard-view">Overview Dashboard</a>
-                <div class="menu-label">Learning Frameworks</div>
-                <a href="#aws" class="menu-item" data-target="aws-view">Amazon Web Services</a>
-                <a href="#azure" class="menu-item" data-target="azure-view">Microsoft Azure</a>
-                <a href="#gcp" class="menu-item" data-target="gcp-view">Google Cloud Platform</a>
-                <div class="menu-label">Evaluation</div>
-                <a href="#quiz" class="menu-item" data-target="quiz-view">Knowledge Check</a>
+            <div class="brand">CCloudLearn<span>_</span></div>
+            <div class="toc-title">Table of Contents</div>
+            <nav class="toc-menu">
+                <a href="#introduction" class="toc-item active">Introduction</a>
+                <a href="#core-concepts" class="toc-item">Core Concepts</a>
+                <a href="#service-models" class="toc-item">Cloud Service Models</a>
+                <a href="#deployment-models" class="toc-item">Cloud Deployment Models</a>
+                <a href="#major-providers" class="toc-item">Major Cloud Providers</a>
+                <a href="#networking" class="toc-item">Cloud Networking</a>
+                <a href="#storage" class="toc-item">Cloud Storage</a>
+                <a href="#security" class="toc-item">Cloud Security</a>
+                <a href="#containers" class="toc-item">Containers & Kubernetes</a>
+                <a href="#serverless" class="toc-item">Serverless Computing</a>
+                <a href="#devops" class="toc-item">DevOps, CI/CD, & IaC</a>
             </nav>
+            <div class="sidebar-tip">
+                <strong>Tip:</strong> Use the sidebar options to seamlessly jump across architectural modules.
+            </div>
         </aside>
 
+        <!-- Main Scrollable Content Area -->
         <main class="main-content">
-            <header class="top-bar">
-                <h1 id="current-view-title">Overview Dashboard</h1>
-                <div class="user-profile">
-                    <span class="avatar">CC</span>
-                    <span class="username">Cloud Candidate</span>
+
+            <!-- 1. Introduction Module -->
+            <section id="introduction" class="content-section">
+                <div class="badge">The Definitive Reference</div>
+                <h1 class="hero-title">Cloud Computing:<br><span>A Complete Guide</span></h1>
+                <p class="hero-subtitle">Master cloud computing from the ground up. An authoritative, deeply technical learning hub for students, developers, and IT professionals aiming to understand the architectures that power the modern web.</p>
+                
+                <div class="metrics-row">
+                    <div class="metric-box"><span class="num">11</span><span class="lbl">Core Modules</span></div>
+                    <div class="metric-box"><span class="num">3</span><span class="lbl">Major Providers</span></div>
+                    <div class="metric-box"><span class="num">∞</span><span class="lbl">Scalability</span></div>
+                    <div class="metric-box"><span class="num">Zero</span><span class="lbl">Fluff</span></div>
                 </div>
-            </header>
 
-            <div class="content-body">
+                <div class="callout-card">
+                    <h3>What is Cloud Computing? (NIST Definition)</h3>
+                    <p class="quote">"Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction."</p>
+                </div>
+            </section>
 
-                <!-- 1. DASHBOARD VIEW -->
-                <section id="dashboard-view" class="view-panel active">
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <h3>Global Provider Share</h3>
-                            <div class="stat">32% AWS / 23% Azure</div>
-                            <p>Market penetration index metrics</p>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Core Resource Links</h3>
-                            <div class="stat">12 Core Links</div>
-                            <p>Hand-picked documentation pathways</p>
-                        </div>
-                        <div class="metric-card">
-                            <h3>Assessment Readiness</h3>
-                            <div class="stat">Practice Arena</div>
-                            <p>Interactive testing terminal active</p>
-                        </div>
-                    </div>
+            <!-- 2. Core Concepts Module -->
+            <section id="core-concepts" class="content-section">
+                <h2 class="section-heading">The 5 Essential Characteristics</h2>
+                <p class="section-desc">Defined by the National Institute of Standards and Technology (NIST), these five traits are what separates true cloud computing from merely renting a server in a data center.</p>
 
-                    <div class="dashboard-showcase">
-                        <div class="showcase-info">
-                            <h2>Strategic Cloud Target Matrix</h2>
-                            <p>Modern DevOps engineers focus cross-functionally. Select an infrastructure platform from the side interface panel to access core whitepapers, setup schemas, deployment documentation, and direct console access vectors.</p>
-                        </div>
+                <div class="accordion-group">
+                    <div class="accordion-item">
+                        <div class="accordion-trigger">On-Demand Self-Service</div>
+                        <div class="accordion-content">Users can provision computing capabilities, such as server time and network storage, unilaterally as needed automatically without requiring human interaction with each service provider.</div>
                     </div>
-                </section>
+                    <div class="accordion-item">
+                        <div class="accordion-trigger">Broad Network Access</div>
+                        <div class="accordion-content">Capabilities are available over the network and accessed through standard mechanisms that promote use by heterogeneous thin or thick client platforms (e.g., mobile phones, tablets, laptops, and workstations).</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-trigger">Resource Pooling</div>
+                        <div class="accordion-content">The provider's computing resources are pooled to serve multiple consumers using a multi-tenant model, with different physical and virtual resources dynamically assigned and reassigned according to consumer demand.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-trigger">Rapid Elasticity</div>
+                        <div class="accordion-content">Capabilities can be elastically provisioned and released, in some cases automatically, to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often appear to be unlimited.</div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-trigger">Measured Service</div>
+                        <div class="accordion-content">Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts).</div>
+                    </div>
+                </div>
 
-                <!-- 2. AWS VIEW -->
-                <section id="aws-view" class="view-panel">
-                    <div class="provider-banner aws-banner">
-                        <h2>Amazon Web Services Path</h2>
-                        <p>Industry-standard public infrastructure landscape.</p>
-                    </div>
-                    <div class="resource-block">
-                        <h3>Foundational Technical Documentation</h3>
-                        <div class="link-row">
-                            <a href="https://docs.aws.amazon.com/" target="_blank" class="resource-link-card">
-                                <h4>AWS Documentation Portal</h4>
-                                <p>Comprehensive API reference sheets and technical user manuals.</p>
-                            </a>
-                            <a href="https://aws.amazon.com/architecture/" target="_blank" class="resource-link-card">
-                                <h4>AWS Architecture Framework Center</h4>
-                                <p>Well-architected structural design blueprints and reference schemas.</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="resource-block">
-                        <h3>Console & Operational Execution Environments</h3>
-                        <div class="link-row">
-                            <a href="https://aws.amazon.com/console/" target="_blank" class="resource-link-card">
-                                <h4>AWS Management Console Portal</h4>
-                                <p>Primary interface node for resource deployment and terminal access.</p>
-                            </a>
-                            <a href="https://aws.amazon.com/free/" target="_blank" class="resource-link-card">
-                                <h4>AWS Tier Access Sandbox</h4>
-                                <p>Free operating parameters for sandbox infrastructure accounts.</p>
-                            </a>
-                        </div>
-                    </div>
-                </section>
+                <h3 class="sub-heading">History & Evolution</h3>
+                <ul class="timeline-list">
+                    <li><strong>Mainframes (1950s):</strong> Massive centralized computers accessed via dumb terminals. Time-sharing was the earliest precursor to resource pooling.</li>
+                    <li><strong>Client-Server (1990s):</strong> Decentralization. Dedicated servers hosted applications and databases, accessed by intelligent client PCs over local networks.</li>
+                    <li><strong>Virtualization (2000s):</strong> The breakthrough. Running multiple virtual machines on a single physical server maximized hardware utilization.</li>
+                </ul>
+            </section>
 
-                <!-- 3. AZURE VIEW -->
-                <section id="azure-view" class="view-panel">
-                    <div class="provider-banner azure-banner">
-                        <h2>Microsoft Azure Framework</h2>
-                        <p>Enterprise system standard integrations.</p>
-                    </div>
-                    <div class="resource-block">
-                        <h3>Core Documentation Engines</h3>
-                        <div class="link-row">
-                            <a href="https://learn.microsoft.com/azure/" target="_blank" class="resource-link-card">
-                                <h4>Microsoft Azure Documentation Hub</h4>
-                                <p>Technical manuals covering structural hybrid architectures.</p>
-                            </a>
-                            <a href="https://learn.microsoft.com/azure/architecture/" target="_blank" class="resource-link-card">
-                                <h4>Azure Cloud Architecture Index</h4>
-                                <p>Validated templates and corporate pattern guidelines.</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="resource-block">
-                        <h3>Console Gateways</h3>
-                        <div class="link-row">
-                            <a href="https://portal.azure.com/" target="_blank" class="resource-link-card">
-                                <h4>Azure Management Control Panel</h4>
-                                <p>Deployment interface for enterprise services and structural configurations.</p>
-                            </a>
-                        </div>
-                    </div>
-                </section>
+            <!-- 3. Service Models Module -->
+            <section id="service-models" class="content-section">
+                <h2 class="section-heading">Cloud Service Models</h2>
+                <p class="section-desc">Cloud computing is offered in three primary service models, often referred to as the SPI tier (SaaS, PaaS, IaaS). They dictate the level of control, flexibility, and management responsibility you have over your IT stack.</p>
 
-                <!-- 4. GCP VIEW -->
-                <section id="gcp-view" class="view-panel">
-                    <div class="provider-banner gcp-banner">
-                        <h2>Google Cloud Platform Workspace</h2>
-                        <p>Specialized engine for container logic and data processing matrices.</p>
+                <div class="content-block shadow-box">
+                    <div class="block-header">
+                        <h3>PaaS</h3>
+                        <span class="block-tag">Platform as a Service</span>
                     </div>
-                    <div class="resource-block">
-                        <h3>Infrastructure Specification Documents</h3>
-                        <div class="link-row">
-                            <a href="https://cloud.google.com/docs" target="_blank" class="resource-link-card">
-                                <h4>Google Cloud Documentation Framework</h4>
-                                <p>System infrastructure configuration documentation libraries.</p>
-                            </a>
-                            <a href="https://cloud.google.com/architecture" target="_blank" class="resource-link-card">
-                                <h4>GCP Technical Architecture Blueprints</h4>
-                                <p>Detailed setup guides for Kubernetes layouts and storage systems.</p>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 5. QUIZ VIEW -->
-                <section id="quiz-view" class="view-panel">
-                    <div class="quiz-container">
-                        <h2>Cloud Architecture Evaluation Terminal</h2>
-                        <p>Validate your core knowledge infrastructure principles.</p>
-                        <div class="quiz-card">
-                            <h3 id="quiz-question">Loading evaluation parameters...</h3>
-                            <div class="quiz-options">
-                                <button class="option-btn" data-idx="0"></button>
-                                <button class="option-btn" data-idx="1"></button>
-                                <button class="option-btn" data-idx="2"></button>
-                                <button class="option-btn" data-idx="3"></button>
+                    <p class="block-text">Removes the need to manage the underlying infrastructure (usually hardware and operating systems) and allows you to focus on the deployment and management of your applications.</p>
+                    <div class="meta-row">
+                        <div class="meta-col">
+                            <strong>EXAMPLES</strong>
+                            <div class="pill-group">
+                                <span class="pill">AWS Elastic Beanstalk</span>
+                                <span class="pill">Heroku</span>
+                                <span class="pill">Google App Engine</span>
                             </div>
-                            <div id="quiz-feedback" class="quiz-feedback-box hidden"></div>
+                        </div>
+                        <div class="meta-col">
+                            <strong>BEST FOR</strong>
+                            <p class="small-text">Developers who want to focus entirely on writing code without worrying about server provisioning, patching, or maintenance.</p>
                         </div>
                     </div>
-                </section>
+                </div>
 
-            </div>
+                <div class="content-block shadow-box">
+                    <div class="block-header">
+                        <h3>SaaS</h3>
+                        <span class="block-tag">Software as a Service</span>
+                    </div>
+                    <p class="block-text">Provides you with a completed product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications.</p>
+                    <div class="meta-row">
+                        <div class="meta-col">
+                            <strong>EXAMPLES</strong>
+                            <div class="pill-group">
+                                <span class="pill">Salesforce</span>
+                                <span class="pill">Gmail</span>
+                                <span class="pill">Slack</span>
+                                <span class="pill">Zoom</span>
+                            </div>
+                        </div>
+                        <div class="meta-col">
+                            <strong>BEST FOR</strong>
+                            <p class="small-text">End users and businesses who just need to use a piece of software to accomplish a task without managing any of its underlying infrastructure or codebase.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Deployment Models Module -->
+            <section id="deployment-models" class="content-section">
+                <h2 class="section-heading">Cloud Deployment Models</h2>
+                <p class="section-desc">Deployment models define where your cloud infrastructure resides, who manages it, and who shares the physical hardware. Choosing the right model involves trade-offs between cost, security, compliance, and control.</p>
+
+                <div class="grid-2x2">
+                    <div class="grid-card">
+                        <h3>Public Cloud</h3>
+                        <p>Infrastructure is owned and operated by a third-party cloud provider and delivered over the public internet. Resources are shared with other organizations (multi-tenant).</p>
+                        <span class="card-footer-info">Providers: AWS, Azure, GCP</span>
+                    </div>
+                    <div class="grid-card">
+                        <h3>Private Cloud</h3>
+                        <p>Cloud infrastructure maintained on a private network, used exclusively by one organization. Can be physically located in your on-site datacenter or hosted by a third party.</p>
+                        <span class="card-footer-info">Tech: VMware vSphere, OpenStack</span>
+                    </div>
+                    <div class="grid-card">
+                        <h3>Hybrid Cloud</h3>
+                        <p>Combines public and private clouds, bound together by technology that allows data and applications to be shared between them. Provides high flexibility and data deployment options.</p>
+                        <span class="card-footer-info">Tech: AWS Outposts, Azure Arc</span>
+                    </div>
+                    <div class="grid-card">
+                        <h3>Multi-Cloud</h3>
+                        <p>Using multiple public cloud providers simultaneously to avoid vendor lock-in, leverage specific best-of-breed services, or ensure extreme high availability.</p>
+                        <span class="card-footer-info">Strategy: HashiCorp Terraform</span>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Public Cloud</th>
+                                <th>Private Cloud</th>
+                                <th>Hybrid Cloud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Hardware Location</strong></td>
+                                <td>Provider's Datacenter</td>
+                                <td>On-premises or Hosted</td>
+                                <td>Both</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hardware Tenancy</strong></td>
+                                <td>Multi-tenant (shared)</td>
+                                <td>Single-tenant (dedicated)</td>
+                                <td>Mixed</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CapEx vs OpEx</strong></td>
+                                <td>100% OpEx (Pay-as-you-go)</td>
+                                <td>High CapEx (Buy hardware)</td>
+                                <td>Mixed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
         </main>
-
     </div>
 
     <script src="app.js"></script>
