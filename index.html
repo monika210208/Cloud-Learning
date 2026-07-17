@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudLearn_ | Enterprise Architecture Reference</title>
-    <link rel="stylesheet" href="style.css">
+    <link class="code-link" rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -93,47 +93,50 @@
                     </div>
 
                     <div class="tab-view-window">
+                        <!-- IaaS Panel -->
                         <div id="iaas-content" class="tab-panel active">
                             <h3>Infrastructure as a Service (IaaS)</h3>
-                            <p class="panel-intro-text">Provides raw compute, block storage, and software-defined networking primitives. Offers maximum architectural flexibility, leaving OS kernel tuning, routing rules, and data schemas entirely in your hands.</p>
+                            <p class="panel-intro-text">Provides raw compute, block storage, and software-defined networking primitives for maximum architectural control.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed Infrastructure</h4>
-                                    <p>Physical plant facilities, power distribution units, climate systems, optical networking arrays, bare-metal server chassis, and Type-1 Hypervisors.</p>
+                                    <h4>Provider Managed</h4>
+                                    <p>Physical plants, power units, climate controls, optical networking, bare-metal chassis, and Type-1 Hypervisors.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed Configuration</h4>
-                                    <p>Guest Operating System distributions (patching, security configurations), file systems, network firewalls, container engines, middleware, and application code.</p>
+                                    <h4>User Managed</h4>
+                                    <p>Guest OS distributions, patching, configurations, file systems, network firewalls, middleware, and application code.</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- PaaS Panel -->
                         <div id="paas-content" class="tab-panel">
                             <h3>Platform as a Service (PaaS)</h3>
-                            <p class="panel-intro-text">Removes the operational overhead of server patching, capacity provisioning, and OS maintenance. Abstracted runtimes let developers focus entirely on application logical components and database configurations.</p>
+                            <p class="panel-intro-text">Abstracts server patching, capacity provisioning, and OS maintenance so developers can focus strictly on logical deployment.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed Infrastructure</h4>
-                                    <p>Automated OS patch lifecycles, memory allocation pooling, runtime compilation environments (Node.js, JVM, CLR), load balancer pools, and cluster management tools.</p>
+                                    <h4>Provider Managed</h4>
+                                    <p>Automated OS lifecycles, memory allocation pooling, runtime compilation environments, load balancer pools, and cluster routing.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed Configuration</h4>
-                                    <p>Application source files, API routes, data persistence configurations, access keys, webhook pipelines, and fine-grained environment variables.</p>
+                                    <h4>User Managed</h4>
+                                    <p>Application source files, API routes, data persistence logic, access keys, webhook configurations, and environment variables.</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- SaaS Panel -->
                         <div id="saas-content" class="tab-panel">
                             <h3>Software as a Service (SaaS)</h3>
-                            <p class="panel-intro-text">A completely centralized deployment strategy where the application stack is entirely executed and maintained by a third-party vendor, consumed over the web via secure endpoints or specialized desktop thin clients.</p>
+                            <p class="panel-intro-text">A completely centralized deployment strategy where the entire application stack is executed, updated, and maintained by the vendor.</p>
                             <div class="matrix-grid">
                                 <div class="matrix-item">
-                                    <h4>Provider Managed Infrastructure</h4>
-                                    <p>100% of the architecture including physical infrastructure, databases, UI rendering, scaling mechanisms, security patches, and application logical bugs.</p>
+                                    <h4>Provider Managed</h4>
+                                    <p>100% of the architecture including physical infrastructure, backend databases, UI rendering, scaling, and application logic updates.</p>
                                 </div>
                                 <div class="matrix-item">
-                                    <h4>User Managed Configuration</h4>
-                                    <p>Granular RBAC (Role-Based Access Control) user seats, tenant preference parameters, notification policies, and custom third-party OAuth integrations.</p>
+                                    <h4>User Managed</h4>
+                                    <p>Granular Role-Based Access Control (RBAC) user seats, tenant preferences, notification policies, and third-party OAuth integrations.</p>
                                 </div>
                             </div>
                         </div>
